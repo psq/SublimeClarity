@@ -32,7 +32,7 @@ contexts:
     - match: (as-contract|contract-caller|tx-sender|block-height|at-block|get-block-info)\b
       scope: support.function.sender-context.clar
 
-    - match: (var-set|map-set|map-delete|map-insert|(ft-transfer\\?)|nft-transfer\?|nft-mint\\?|ft-mint\\?|nft-get-owner\\?|ft-get-balance\\?|contract-call\\?)\b
+    - match: (var-set|map-set|map-delete|map-insert|(ft-transfer)|nft-transfer|nft-mint|ft-mint\\?|nft-get-owner|ft-get-balance|contract-call|stx-transfer|stx-burn)\b
       scope: support.function.with-side-effects.clar
 
     - match: ([a-zA-Z]+[-\w]+)
@@ -45,6 +45,14 @@ contexts:
       scope: support.function.boolean-test.clar
 
     - match: (get)\b
+      scope: keyword.control.clar
+
+    # no idea why it does not match with the keyword
+    - match: "\\?"
+      scope: support.function.with-side-effects.clar
+
+    # no idea why it does not match with the keyword
+    - match: "\\!"
       scope: keyword.control.clar
 
     - match: '"'
